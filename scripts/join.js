@@ -34,7 +34,7 @@ $("form").submit(function (e) {
         $('#nickname').addClass('is-invalid').focus();
         $('.form-error').text('Invalid nickname').show();
         isValid = false;
-    } else if (nickname.length < 3 || nickname.length > 25) {
+    } else if (nickname.length < 1 || nickname.length > 25) {
         $('#nickname').addClass('is-invalid').focus();
         $('.form-error').text('Invalid nickname').show();
         isValid = false;
