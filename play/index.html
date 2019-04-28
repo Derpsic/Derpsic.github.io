@@ -149,9 +149,29 @@
 </script>
 <script>
         // Fit stage to container
+        var stageWidth = 850;
+        var stageHeight = 480;
+
         window.onresize = function() {
             var body = $('#stage').parent();
-            $('#stage').width(body.width()).height(body.width() * .54);
+            var width = body.width();
+            console.log('resize', width);
+            if (width < 400) {
+                $('#stage').width(width).height(width);
+                world.setView('small');
+                world.stage.scaleX = stageWidth / stageHeight; // 1.7
+                world.stage.scaleY = 1;
+                world.stage.viewWidth = width;
+                world.stage.viewHeight = width;
+            } else {
+                $('#stage').width(width).height(width * .56);
+                world.setView('wide');
+                world.stage.scaleX = 1;
+                world.stage.scaleY = 1;
+                world.stage.room.x = 0;
+                world.stage.viewWidth = width;
+                world.stage.x = 0;
+            }
         }
         window.onresize();
 
@@ -170,6 +190,18 @@
                 $('#inputMessage').focus();
             } else {
                 $('#inputMessage').focus();
+            }
+        }
+
+        var isDarkmode = false;
+
+        function toggleDarkmode() {
+            if (isDarkmode) {
+                $('body').removeClass('darkmode');
+                isDarkmode = false;
+            } else {
+                $('body').addClass('darkmode');
+                isDarkmode = true;
             }
         }
 
