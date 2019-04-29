@@ -21,10 +21,6 @@
             font-size: 16px;
             height: auto;
 		}
-		
-		.lightmode {
-			background-color:#ffffff;transition:0.5s;
-        }
 
         .darkmode {
             background-color:rgb(10, 20, 30);transition:0.5s;
@@ -201,7 +197,7 @@
 
         function toggleDarkmode() {
             if (isDarkmode) {
-                $('body').addClass('lightmode');
+                $('body').removeClass('darkmode');
                 isDarkmode = false;
             } else {
                 $('body').addClass('darkmode');
