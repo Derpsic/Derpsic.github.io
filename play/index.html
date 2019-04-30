@@ -12,13 +12,29 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
 <style>
-<link rel="stylesheet"href="../styles/main.css"><style>.hide {
-display: none
-}
+        <link rel="stylesheet"href="../styles/main.css"><style>.hide {
+            display: none
+        }
 
-.darkmode {
-background-color:black;
-}
+        .client .form-control {
+            padding: 0;
+            font-size: 16px;
+            height: auto;
+        }
+
+        .darkmode {
+            background-color: black;
+        }
+
+        @media (max-width: 767.98px) {
+            body {
+                padding-top: 0;
+            }
+
+            .client .col {
+                padding: 0;
+            }
+        }
 
 </style>
 <!-- PlayFab -->
@@ -42,7 +58,7 @@ background-color:black;
 <div class="row justify-content-center">
 <div class="col col-lg-10 col-xl-8">
 <div>
-<canvas id="stage" width="850" height="960"></canvas>
+<canvas id="stage" width="850" height="480"></canvas>
 </div>
 </div>
 </div>
@@ -134,28 +150,12 @@ background-color:black;
 <script>
         // Fit stage to container
         var stageWidth = 850;
-        var stageHeight = 960;
+        var stageHeight = 480;
 
         window.onresize = function() {
             var body = $('#stage').parent();
             var width = body.width();
-            console.log('resize', width);
-            if (width < 400) {
-                $('#stage').width(width).height(width);
-                world.setView('small');
-                world.stage.scaleX = stageWidth / stageHeight; // 1.7
-                world.stage.scaleY = 1;
-                world.stage.viewWidth = width;
-                world.stage.viewHeight = width;
-            } else {
-                $('#stage').width(width).height(width * .56);
-                world.setView('wide');
-                world.stage.scaleX = 1;
-                world.stage.scaleY = 1;
-                world.stage.room.x = 0;
-                world.stage.viewWidth = width;
-                world.stage.x = 0;
-            }
+            $('#stage').width(width).height(width * .56);
         }
         window.onresize();
 
